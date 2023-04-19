@@ -1,7 +1,4 @@
 spring:
-
-  #es搜索
   elasticsearch:
     rest:
-      username: my-application
       uris: 127.0.0.1:9200
