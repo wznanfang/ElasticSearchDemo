@@ -14,12 +14,9 @@ import java.util.Optional;
 @SpringBootTest
 class ElasticSearchDemoApplicationTests {
 
-    @Test
-    void contextLoads() {
-    }
-
     @Autowired
     private BookRepository bookRepository;
+
 
     @Test
     void save() {
@@ -27,34 +24,37 @@ class ElasticSearchDemoApplicationTests {
         book.setName("时间");
         book.setAuthor("wzp");
         book.setPrice(96.58);
-        book.setIntroduction("超级牛逼的一本书");
+        book.setDesc("超级牛逼的一本书");
         Book a = bookRepository.save(book);
         System.out.println(a);
     }
 
     @Test
-    void delete() {
-        bookRepository.deleteById("7C2dUXoBLSM8rIvWaVFz");
-    }
-
-    @Test
     void Update() {
-        Optional<Book> optional = bookRepository.findById("7S2gUXoBLSM8rIvW7lFj");
+        Optional<Book> optional = bookRepository.findById("iiggl4cBHjaCwbI1eVRa");
         Book book = optional.orElse(null);
         book.setName("时间11111");
         book.setAuthor("wzp1");
         book.setPrice(96.58);
-        book.setIntroduction("超级牛逼的一本书aaaaaaaaaaa");
+        book.setDesc("超级牛逼的一本书aaaaaaaaaaa");
         Book a = bookRepository.save(book);
+    }
+
+    @Test
+    void delete() {
+        bookRepository.deleteById("iiggl4cBHjaCwbI1eVRa");
+    }
+
+    @Test
+    void findById(){
+        bookRepository.findById("iiggl4cBHjaCwbI1eVRa");
     }
 
     @Test
     void findAll() {
         Pageable pageable = PageRequest.of(0, 10);
         Page<Book> page = bookRepository.findAll(pageable);
-        page.getContent().forEach(book -> {
-            System.out.println(book);
-        });
+        page.getContent().forEach(System.out::println);
     }
 
 }
