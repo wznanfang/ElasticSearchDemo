@@ -4,6 +4,7 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import java.io.Serializable;
 
@@ -27,28 +28,26 @@ public class Book implements Serializable {
     /**
      * 书名
      */
-    @Field
+    @Field(type = FieldType.Keyword)
     private String name;
 
     /**
      * 作者
      */
-    @Field
+    @Field(type = FieldType.Keyword)
     private String author;
 
     /**
      * 价格
      */
-    @Field
+    @Field(type = FieldType.Double)
     private Double price;
 
     /**
      * 简介
      */
-    @Field
-    private String introduction;
-
-
+    @Field(type = FieldType.Text)
+    private String desc;
 
 
 }
