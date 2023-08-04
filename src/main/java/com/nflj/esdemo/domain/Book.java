@@ -1,4 +1,4 @@
-package com.nflj.elasticsearchdemo.domain;
+package com.nflj.esdemo.domain;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;

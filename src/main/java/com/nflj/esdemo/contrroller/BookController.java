@@ -1,8 +1,8 @@
-package com.nflj.elasticsearchdemo.contrroller;
+package com.nflj.esdemo.contrroller;
 
-import com.nflj.elasticsearchdemo.domain.Book;
-import com.nflj.elasticsearchdemo.repository.BookRepository;
-import com.nflj.elasticsearchdemo.vo.BookVo;
+import com.nflj.esdemo.domain.Book;
+import com.nflj.esdemo.repository.BookRepository;
+import com.nflj.esdemo.vo.BookVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;

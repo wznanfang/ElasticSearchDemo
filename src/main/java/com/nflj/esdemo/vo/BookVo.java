@@ -1,7 +1,6 @@
-package com.nflj.elasticsearchdemo.vo;
+package com.nflj.esdemo.vo;
 
 import lombok.Data;
-import org.springframework.data.elasticsearch.annotations.Document;
 
 import java.io.Serializable;
 

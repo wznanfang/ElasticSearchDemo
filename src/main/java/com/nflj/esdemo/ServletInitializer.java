@@ -1,4 +1,4 @@
-package com.nflj.elasticsearchdemo;
+package com.nflj.esdemo;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

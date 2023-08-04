@@ -1,6 +1,6 @@
-package com.nflj.elasticsearchdemo.repository;
+package com.nflj.esdemo.repository;
 
-import com.nflj.elasticsearchdemo.domain.Book;
+import com.nflj.esdemo.domain.Book;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 import org.springframework.stereotype.Repository;
 
