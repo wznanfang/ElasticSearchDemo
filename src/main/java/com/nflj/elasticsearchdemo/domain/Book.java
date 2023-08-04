@@ -20,7 +20,7 @@ public class Book implements Serializable {
 
     private static final long serialVersionUID = 8498501025632950288L;
 
-    /**
+        /**
      * id
      */
     @Id
@@ -33,22 +33,10 @@ public class Book implements Serializable {
     private String name;
 
     /**
-     * 作者
+     * 书籍信息
      */
-    @Field(type = FieldType.Keyword)
-    private String author;
-
-    /**
-     * 价格
-     */
-    @Field(type = FieldType.Double)
-    private Double price;
-
-    /**
-     * 简介
-     */
-    @Field(type = FieldType.Text)
-    private String desc;
+    @Field(type = FieldType.Object)
+    private BookInfo bookInfo;
 
 
 }
