@@ -1,4 +1,4 @@
-package com.nflj.esdemo;
+package com.nflj.elasticsearchdemo;
 
 import co.elastic.clients.elasticsearch.ElasticsearchClient;
 import co.elastic.clients.elasticsearch._types.SortOrder;
@@ -6,9 +6,9 @@ import co.elastic.clients.elasticsearch._types.query_dsl.*;
 import co.elastic.clients.elasticsearch.core.SearchResponse;
 import co.elastic.clients.elasticsearch.core.search.Hit;
 import co.elastic.clients.json.JsonData;
-import com.nflj.esdemo.domain.Book;
-import com.nflj.esdemo.domain.BookInfo;
-import com.nflj.esdemo.repository.BookRepository;
+import com.nflj.elasticsearchdemo.domain.Book;
+import com.nflj.elasticsearchdemo.domain.BookInfo;
+import com.nflj.elasticsearchdemo.repository.BookRepository;
 import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Optional;
 
 @SpringBootTest
-class ESDemoApplicationTests {
+class ElasticSearchDemoApplicationTests {
 
     @Resource
     private BookRepository bookRepository;

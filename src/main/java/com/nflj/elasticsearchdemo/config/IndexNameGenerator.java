@@ -18,7 +18,6 @@ public class IndexNameGenerator {
      */
     public String commonIndex() {
         //根据日期生成index
-        String date = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM"));
-        return date;
+        return LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM"));
     }
 }

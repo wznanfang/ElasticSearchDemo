@@ -1,4 +1,5 @@
 spring:
   elasticsearch:
-    rest:
-      uris: 127.0.0.1:9200
+    uris: 127.0.0.1:9200
+    username: elastic
+    password: f3M*FnSn7B6ZfhHNfZJb

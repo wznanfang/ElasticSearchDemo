@@ -1,4 +1,4 @@
-package com.nflj.esdemo.domain;
+package com.nflj.elasticsearchdemo.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
