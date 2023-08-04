@@ -20,7 +20,7 @@ public class Book implements Serializable {
 
     private static final long serialVersionUID = 8498501025632950288L;
 
-        /**
+    /**
      * id
      */
     @Id

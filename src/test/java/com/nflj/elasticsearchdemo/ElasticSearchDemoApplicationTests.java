@@ -15,7 +15,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.util.StopWatch;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -38,7 +37,10 @@ class ElasticSearchDemoApplicationTests {
             Book book = new Book();
             book.setId(String.valueOf(i));
             book.setName("人间游途" + i);
-            BookInfo bookInfo = BookInfo.builder().author("不逆" + i).price((double) i).desc("一本介绍旅途风景的书" + i).build();
+            BookInfo bookInfo = new BookInfo();
+            bookInfo.setAuthor("不逆" + i);
+            bookInfo.setPrice((double) i);
+            bookInfo.setDesc("一本介绍旅途风景的书" + i);
             book.setBookInfo(bookInfo);
             list.add(book);
         }
@@ -76,8 +78,6 @@ class ElasticSearchDemoApplicationTests {
 
     @Test
     void clientFindAll() throws IOException {
-        StopWatch stopWatch = new StopWatch();
-        stopWatch.start();
         //精确匹配
 //        Query name = MatchQuery.of(m -> m.field("name").query("人间游途1"))._toQuery();
 //        Query author = MatchQuery.of(m -> m.field("bookInfo.author").query("不逆1"))._toQuery();
@@ -103,10 +103,7 @@ class ElasticSearchDemoApplicationTests {
                         .sort(f -> f.field(o -> o.field("bookInfo.price").order(SortOrder.Desc)))
                 , Book.class);
         List<Hit<Book>> hits = result.hits().hits();
-        for (Hit<Book> hit : hits) {
-            Book book = hit.source();
-            System.out.println(book);
-        }
+        hits.forEach(hit -> System.out.println(hit.source()));
         System.err.println("总条数：" + result.hits().total().value());
         System.err.println("平均价格：" + result.aggregations().get("bookInfo.price").avg());
     }
