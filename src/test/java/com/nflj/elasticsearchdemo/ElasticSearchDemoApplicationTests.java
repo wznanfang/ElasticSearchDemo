@@ -53,6 +53,7 @@ class ElasticSearchDemoApplicationTests {
         Book book = optional.orElse(null);
         BookInfo bookInfo = book.getBookInfo();
         bookInfo.setPrice(1.0);
+        book.setBookInfo(bookInfo);
         bookRepository.save(book);
     }
 
@@ -97,15 +98,20 @@ class ElasticSearchDemoApplicationTests {
         SearchResponse<Book> result = client.search(s -> s
                         .index("book")
                         .query(query)
-                        .aggregations("bookInfo.price", a -> a.avg(avg -> avg.field("bookInfo.price"))) //求平均数
+                        .aggregations("bookInfo.avgPrice", a -> a.avg(avg -> avg.field("bookInfo.price"))) //求平均
+                        .aggregations("bookInfo.sumPrice", total -> total.sum(sum -> sum.field("bookInfo.price"))) //求和
                         .from(0)
                         .size(10)
                         .sort(f -> f.field(o -> o.field("bookInfo.price").order(SortOrder.Desc)))
                 , Book.class);
         List<Hit<Book>> hits = result.hits().hits();
-        hits.forEach(hit -> System.out.println(hit.source()));
+        for (Hit<Book> hit : hits) {
+            Book book = hit.source();
+            System.out.println(book);
+        }
         System.err.println("总条数：" + result.hits().total().value());
-        System.err.println("平均价格：" + result.aggregations().get("bookInfo.price").avg());
+        System.err.println("平均价格：" + result.aggregations().get("bookInfo.avgPrice").avg());
+        System.err.println("总价：" + result.aggregations().get("bookInfo.sumPrice").sum());
     }
 
 }
