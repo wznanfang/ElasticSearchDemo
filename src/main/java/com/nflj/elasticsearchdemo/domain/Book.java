@@ -14,8 +14,8 @@ import java.io.Serializable;
  */
 
 @Data
-//@Document(indexName = "book") //固定索引名字
-@Document(indexName = "book_#{@indexNameGenerator.commonIndex()}") //动态创建索引名字
+@Document(indexName = "book") //固定索引名字
+//@Document(indexName = "book_#{@indexNameGenerator.commonIndex()}") //动态创建索引名字
 public class Book implements Serializable {
 
     private static final long serialVersionUID = 8498501025632950288L;
